@@ -33,5 +33,5 @@ const mapStateToProps = state => {
 };
 
 export default connect(
-    mapStateToProps, {getQuote}
+    mapStateToProps, getQuote
 )(Quotes);
