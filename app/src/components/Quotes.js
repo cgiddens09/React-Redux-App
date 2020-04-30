@@ -1,24 +1,51 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { getQuote } from '../actions/actions';
+import styled from 'styled-components';
+
+const Text = styled.h2`
+    color: #ffe2cc;
+    margin-left: 25%;
+    margin-top: 5%;
+`
+const Words = styled.div`
+    width:60%;
+    display:flex;
+    flex-direction: column;
+    margin-left: 30%;
+    padding-top: 50%; 
+
+`
+
+const Section = styled.div`
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+`
 
 const Quotes = ({ getQuote, quote, isFetching, error }) => {
     if(error !== "")
     return (
         <div>
-            <h2>{error}</h2>
-            <button onClick={getQuote}>Get Ron's Wisdom</button>
+            <Text>{error}</Text>
+            <Words>
+                <button onClick={getQuote}>Get Ron's Wisdom</button>
+            </Words>
         </div>
     );
 
     if (isFetching) {
-        return <h2>One Sec...</h2>
+        return <Text>One Sec...</Text>
     } else {
         return (
-            <div>
-                <h2>Ron's Wisdom: {quote}</h2>
-                <button onClick={getQuote}>Get More Wisdom</button>
-            </div>
+            <Section>
+                <div>
+                    <Text>{quote}</Text>
+                </div>
+                <Words>
+                    <button onClick={getQuote}>Get Wisdom</button>
+                </Words>
+            </Section>
         );
     }
 };
